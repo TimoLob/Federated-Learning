@@ -21,6 +21,9 @@ This distinction in the shape of the shared dataset requires different approache
 
 ![Hfl vs VFL](images/HFLvsVFL.svg)
 ## Horizontal Federated Learning
+#Todo
+
+
 Data:
 1. often unbalanced, non-IID
 2. same features, different samples
@@ -35,7 +38,10 @@ One round:
 
 ## Vertical Federated Learning
 
+### Split Learning
+![Split Learning for VFL](images/VFLsplitNN.svg)
 ![VFL forward pass](images/VFLforward.gif)
+
 
 ### Attacks on VFL
 
