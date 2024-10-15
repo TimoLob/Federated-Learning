@@ -70,5 +70,15 @@ If a anomaly score exceeds a certain threshold, then it counts as one vote towar
 
 Remove the malicious local embedding from the concatenated embedding and use the MAE to obtain the purified $\hat h$. Use that as input for the top model.
 
+
+## Results
+Experiments were conducted on 5 datasets in 2 scenarios (4 participants, one of them malicious and 8 participants, 3 of them malicious).
+
+VFLIP reduces the attack success rate (ASR) on the tested models by 80-90% with a slight drop in accuracy of 2-4%.
+
+To combat VFLIP, the attacker must sacrifice ASR.
+## Further Research
+
+
 ## References
 Cho, Yungi, Woorim Han, Miseon Yu, Younghan Lee, Ho Bae, and Yunheung Paek. ‘VFLIP: A Backdoor Defense for Vertical Federated Learning via Identification and Purification’. In Computer Security – ESORICS 2024, edited by Joaquin Garcia-Alfaro, Rafał Kozik, Michał Choraś, and Sokratis Katsikas, 291–312. Cham: Springer Nature Switzerland, 2024. https://doi.org/10.1007/978-3-031-70903-6_15.
