@@ -4,24 +4,6 @@
 - Defense against backdoor attacks on VFL (e.g. [BadVFL](../BadVFL/README.md))
 
 
-## Training for VFL
-![Optimization Problem](../images/VFLIPoptimization.svg)
-
-
-Initialization:
-1. ID alignment (find overlap between the participant's dataset)
-   - e.g. Private set intersection
-
-
-Training rounds:
-1. Batch index selection
-2. Bottom model forward pass
-   -   Participants send embeddings to server
-3. Top model forward pass
-4. Top model backward propagation
-   - Server sends gradients for each participant's embeddings back
-5. Bottom model backward propagation
-
 
 
 ## Backdoor Attack
