@@ -15,7 +15,6 @@
 ## Backdoor Trigger Insertion Stage
 
 Perturb some training samples of the target class to be close to the trigger-embedded instances in the source class.
-- Source class : 
 
 ## Pipeline
 
@@ -58,7 +57,7 @@ Update $B_{adv}$ using the loss received from the submitted embeddings $B_{adv}(
 Repeat Step 3 and 4 iteratively until training converges.
 
 
-## Mental Model / Example
+## Mental Model
 Source class : Cat  
 Target class : Dog  
 **During training:**
@@ -79,12 +78,19 @@ A fraction $p$ (poisoning budget) of the target class embeddings are replaced wi
 | Cat*       | Cat with Backdoor ($\approx Dog$) | Cat   | Dog?          |
 
 The backdoor is inserted into an image. The embeddings of that image from the malicious participant now look like the embeddings for the target class.
+## Random Thoughts / Questions
 
+How can this attack achieve the reported attack success rates of ~80%?
+- The other participants are calculating their embeddings correctly and 
+their embeddings intuitively should represent the correct label.
+- The top model has never seen the embedding combination of backdoored source image embeddings and correct source embedding, BadVFL only replaces images that are of the target label with backdoored training samples.
+- Inserting the trigger using a saliency map boosts the ASR from 0.62 to 0.85 (in comparison to random positions).
+- The perturbed area is has the strongest effect on the output, this intentional change to the most effective attack area might explain this.
 
 ## Future Work
-- Dependency on auxiliary dataset
+- Get rid of dependency on auxiliary dataset
 - More Defenses
-- Impactt of parameters
+- Impact of parameters
 
 ## References
 Naseri, Mohammad, Yufei Han, and Emiliano De Cristofaro. ‘BadVFL: Backdoor Attacks in Vertical Federated Learning’. arXiv.org, 18 April 2023. https://arxiv.org/abs/2304.08847v2.

@@ -1,13 +1,10 @@
 # VFLIP
-#todo
 
 - Defense against backdoor attacks on VFL (e.g. [BadVFL](../BadVFL/README.md))
 
 
-
-
 ## Backdoor Attack
-Goal:
+Goal of the attacker:
 - model correctly predicts clean samples
 - misclassifies backdoor-triggered samples as target label
 
@@ -40,11 +37,11 @@ Calculate $N-1$ anomaly scores for each participant.
 
 For participant $i$, the anomaly scores are calculated by masking everything except $h_j$ for each $j\neq i$, then comparing the distance from the output of the MAE for $h_i$ to the actual input using the $l2$ norm.
 
-#todo Review after re-reading BadVFL
-
 During training, the attacker injects the backdoor trigger into the target label samples.
 
-Therefore, if at the inference stage, if the attacker inserts the backdoor trigger into non-target label samples, it results in a high anomaly score for the malicious embedding because the MAE did not learn about the relationship between the backdoor-triggered embeddings and the embeddings of the non-target labels. 
+Therefore, at the inference stage, if the attacker inserts the backdoor trigger into non-target label samples, it results in a high anomaly score for the malicious embedding because the MAE did not learn about the relationship between the backdoor-triggered embeddings and the embeddings of the non-target labels. 
+
+(See [BadVFL#Mental Model](../BadVFL/README.md#mental-model), the MAE has never seen the combination of backdoored source image embeddings and source image embeddings.)
 
 If a anomaly score exceeds a certain threshold, then it counts as one vote towards marking that local embedding as malicious. If the majority of the votes are signaling malicious, then the input is considered a backdoor-triggering embedding.
 
