@@ -21,7 +21,6 @@ This distinction in the shape of the shared dataset requires different approache
 
 ![Hfl vs VFL](images/HFLvsVFL.svg)
 ## Horizontal Federated Learning
-#Todo
 ![HFL](images/HFL.gif)
 Data:
 1. often unbalanced, non-IID
@@ -77,6 +76,8 @@ Animation.ipynb contains code to visualize the concepts related to federated lea
 
 VFL Sandbox.ipynb contains a simple example on how vertical federated learning is applied to the Fashion-MNIST dataset. The feature space is split in half. One client has the top half of all the images, the other has the bottom half. A server has the labels.
 The parties learn a split neural network that achieves close to the same level of accuracy as a centralized approach.
+
+BadVFL.ipynb currently contains an improved version of VFL compared to VFL Sandbox. It also contains the start of the adversarial client implementation. The model extraction phase is working.
 
 ## References
 McMahan, Brendan, Eider Moore, Daniel Ramage, Seth Hampson, and Blaise Aguera y Arcas. ‘Communication-Efficient Learning of Deep Networks from Decentralized Data’. In Proceedings of the 20th International Conference on Artificial Intelligence and Statistics, 1273–82. PMLR, 2017. https://proceedings.mlr.press/v54/mcmahan17a.html.
