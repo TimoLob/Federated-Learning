@@ -57,6 +57,30 @@ Update $B_{adv}$ using the loss received from the submitted embeddings $B_{adv}(
 
 Repeat Step 3 and 4 iteratively until training converges.
 
+
+## Mental Model / Example
+Source class : Cat  
+Target class : Dog  
+**During training:**
+
+| Label | $P_M$                       | $P_{1}$ |
+| ----- | --------------------------- | ------- |
+| Cat   | Cat                         | Cat     |
+| Dog   | Cat with Backdoor<br>or Dog | Dog     |
+
+A fraction $p$ (poisoning budget) of the target class embeddings are replaced with the embeddings from the source class with backdoor trigger.
+
+**During Inference**
+
+| True Label | $P_M$                             | $P_1$ | Prediction |
+| ---------- | --------------------------------- | ----- | ---------- |
+| Cat        | Cat                               | Cat   | Cat        |
+| Dog        | Dog                               | Dog   | Dog        |
+| Cat*       | Cat with Backdoor ($\approx Dog$) | Cat   | Dog?          |
+
+The backdoor is inserted into an image. The embeddings of that image from the malicious participant now look like the embeddings for the target class.
+
+
 ## Future Work
 - Dependency on auxiliary dataset
 - More Defenses
