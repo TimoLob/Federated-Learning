@@ -2,8 +2,22 @@
 
 ## Situation
 - VFL with model splitting
+- Goal:
+  - instert backdoor pattern that triggers missclassification of a source class sample as a target class
+  - keep model performance for normal samples up
 
-##  Model Extraction
+## Attacker's Capabilities
+- Manipulate training features of the $M$ compromised participants
+- Can insert backdoor trigger
+- Cannot control the server (and thus the labels)
+- Cannot manipulate other non-malicious participants
+- Has an labeled auxiliary dataset
+
+
+## Attack Overview
+Two Stage attack, first create an approximation of the top model using the auxiliary dataset, then manipulate the training.
+
+###  Model Extraction
 1. Collect a (partially) labeled auxiliary dataset $S$
    - shares the same label space as the real dataset
    - no overlap with the training dataset
@@ -11,11 +25,11 @@
 3. train a model based on those embeddings and labels for the auxiliary dataset
 4. This model $\hat h$ is used as a stand-in for the unknown top model
 
-## Backdoor Trigger Insertion Stage
+### Backdoor Trigger Insertion Stage
 
 Perturb some training samples of the target class to be close to the trigger-embedded instances in the source class.
 
-## Pipeline
+## Attack Pipeline
 
 ### Step 1 - Model Extraction & Label inference
 1. Build a top-model approximation using the auxiliary dataset.
@@ -29,7 +43,7 @@ Perturb some training samples of the target class to be close to the trigger-emb
 
 
 **Notation**:  
-Source class images: $\lbrace x_{i}^S \brace$ $(i=1,2,\dots,N_{s})$  
+Source class images: $\lbrace x_{i}^S \rbrace$ $(i=1,2,\dots,N_{s})$  
 Target class images: $\lbrace x_{j}^T \rbrace$ $(i=1,2,\dots,N_{T})$  
 cloned and backdoored images : $\lbrace \hat{x}^S_{i} \rbrace$ $(i=1,2,\dots,N_{s})$  
 - $\hat{x}^S_{i} = x^S_{i} + \delta$, $\delta$ is the backdoor trigger  
@@ -45,7 +59,7 @@ s.t. \hat{x}^{sub,s}_{i} = x^{sub,s}_{i} + \delta, \quad \mid\mid\delta{\mid\mid
 ```
 
 In words, choose the adversarial model $B_{adv}$ to minimize the distance between the embeddings from the target class to the source class samples with backdoor trigger. Under the constraint that the backdoor perturbation is small ($L_{2}$ norm).  
-$\mid\mid \cdot\mid\mid_{fro}=$ [Frobenius norm](https://en.wikipedia.org/wiki/Matrix_norm#Frobenius_norm) = $L_{2,2}$ norm for matrices
+${\mid\mid} \cdot{\mid\mid}_{fro}=$ [Frobenius norm](https://en.wikipedia.org/wiki/Matrix_norm#Frobenius_norm) = $L_{2,2}$ norm for matrices
 
 **Notation:**  
 modified set of training images : $\hat D$  
