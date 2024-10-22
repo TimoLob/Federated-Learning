@@ -12,11 +12,11 @@ But nevertheless, they provide valuable training data for machine learning appli
 Federated learning can be used to train ML models from this data, without the need to store it on a central server.
 
 Datasets can be split in two ways, in feature space and in sample space. 
-If the data is split in sample space, then that means that multiple parties have (disjoint) datasets with the same features samples with this feature space. For example the images on users smartphones all share the same feature space, but are different images.
+If the data is split in sample space, then that means that multiple parties have (disjoint) datasets with the same features space. For example the images on users smartphones all share the same feature space, but are different images.
 
-If the data is split in feature space then the participating parties have data on the same entity but of different types. For example, an online retailer and a bank may have data on shared customers and they might want to work together to create a model that benefits from both partial datasets.
+If the data is split in feature space then the participating parties have data on the same entity but of different types. For example, an online retailer and a bank may have different kinds of data on shared customers and they might want to work together to create a model that benefits from both partial datasets.
 
-This distinction in the shape of the shared dataset requires different approaches to learning from that data.
+This distinction in the shape of the shared dataset requires different approaches to lean from that data.
 **Horizontal Federated learning** is used for data that is split in sample space, but has the same features, while **vertical federated learning** is used to train on datasets that are split in feature space.
 
 ![Hfl vs VFL](images/HFLvsVFL.svg)
