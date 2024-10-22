@@ -39,8 +39,8 @@ $G_i$ :saliency map of training image $i$
 1. Pick $p%$ of training images from $x_i^T$ and replace them with the poisoned examples calculated like this:
 ```math
 \begin{align}
-B^\star _{adv} = \underset{B_{adv}}{\text{argmin}}\space \sum_{i} \mid\mid B_{adv}(\hat{x}_{i}^{sub,s}) - B_{adv}(x_{i}^t)\mid\mid^2_{fro} \\
-s.t. \hat{x}^{sub,s}_{i} = x^{sub,s}_{i} + \delta, \quad \mid\mid\delta\mid\mid_{L_{2}} \leq \epsilon
+B^\star _{adv} = \underset{B_{adv}}{\text{argmin}}\space \sum_{i} \mid\mid B_{adv}(\hat{x}_{i}^{sub,s}) - B_{adv}(x_{i}^t){\mid\mid}^2_{fro} \\
+s.t. \hat{x}^{sub,s}_{i} = x^{sub,s}_{i} + \delta, \quad \mid\mid\delta{\mid\mid}_{L_{2}} \leq \epsilon
 \end{align}
 ```
 
