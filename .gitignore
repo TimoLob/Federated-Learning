@@ -2,3 +2,4 @@ data/
 media/
 .ipynb_checkpoints/
 Temp/
+**/__pycache__/
