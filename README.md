@@ -79,5 +79,14 @@ The parties learn a split neural network that achieves close to the same level o
 
 BadVFL.ipynb currently contains an improved version of VFL compared to VFL Sandbox. It also contains the start of the adversarial client implementation. The model extraction phase is working.
 
+## Research Questions
+
+- What are interesting properties of VFL (similarities and differences to HFL)?
+- How can those properties be used to defend against backdoor attacks?
+  - What properties are exploited for attacks?
+- Can existing defenses developed for HFL also be applied to VFL?
+  - What changes are needed to make them applicable?
+- New defense?
+
 ## References
 McMahan, Brendan, Eider Moore, Daniel Ramage, Seth Hampson, and Blaise Aguera y Arcas. ‘Communication-Efficient Learning of Deep Networks from Decentralized Data’. In Proceedings of the 20th International Conference on Artificial Intelligence and Statistics, 1273–82. PMLR, 2017. https://proceedings.mlr.press/v54/mcmahan17a.html.
