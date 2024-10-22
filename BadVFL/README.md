@@ -37,11 +37,12 @@ cloned and backdoored images : $\lbrace \hat{x}^S_{i} \rbrace$ $(i=1,2,\dots,N_{
 $G_i$ :saliency map of training image $i$
 ### Step 3 - Manipulating the target class embeddings
 1. Pick $p%$ of training images from $x_i^T$ and replace them with the poisoned examples calculated like this:
-
-$$\begin{align}
+```math
+\begin{align}
 B^\star _{adv} = \underset{B_{adv}}{\text{argmin}}\space \sum_{i} \mid\mid B_{adv}(\hat{x}_{i}^{sub,s}) - B_{adv}(x_{i}^t)\mid\mid^2_{fro} \\
 s.t. \hat{x}^{sub,s}_{i} = x^{sub,s}_{i} + \delta, \quad \mid\mid\delta\mid\mid_{L_{2}} \leq \epsilon
-\end{align}$$
+\end{align}
+```
 
 In words, choose the adversarial model $B_{adv}$ to minimize the distance between the embeddings from the target class to the source class samples with backdoor trigger. Under the constraint that the backdoor perturbation is small ($L_{2}$ norm).  
 $\mid\mid \cdot\mid\mid_{fro}=$ [Frobenius norm](https://en.wikipedia.org/wiki/Matrix_norm#Frobenius_norm) = $L_{2,2}$ norm for matrices
