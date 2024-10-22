@@ -30,9 +30,9 @@ Perturb some training samples of the target class to be close to the trigger-emb
 
 
 **Notation**:  
-Source class images: $\left\{ x_{i}^S \right\}$ $(i=1,2,\dots,N_{s})$  
-Target class images: $\left\{ x_{j}^T \right\}$ $(i=1,2,\dots,N_{T})$  
-cloned and backdoored images : $\left\{ \hat{x}^S_{i} \right\}$ $(i=1,2,\dots,N_{s})$  
+Source class images: $\{ x_{i}^S \}$ $(i=1,2,\dots,N_{s})$  
+Target class images: $\{ x_{j}^T \}$ $(i=1,2,\dots,N_{T})$  
+cloned and backdoored images : $\{ \hat{x}^S_{i} \}$ $(i=1,2,\dots,N_{s})$  
 - $\hat{x}^S_{i} = x^S_{i} + \delta$, $\delta$ is the backdoor trigger  
 
 $G_i$ :saliency map of training image $i$
