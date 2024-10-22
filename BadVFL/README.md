@@ -2,7 +2,6 @@
 
 ## Situation
 - VFL with model splitting
-- 
 
 ##  Model Extraction
 1. Collect a (partially) labeled auxiliary dataset $S$
@@ -30,14 +29,15 @@ Perturb some training samples of the target class to be close to the trigger-emb
 
 
 **Notation**:  
-Source class images: $\{ x_{i}^S \}$ $(i=1,2,\dots,N_{s})$  
-Target class images: $\{ x_{j}^T \}$ $(i=1,2,\dots,N_{T})$  
-cloned and backdoored images : $\{ \hat{x}^S_{i} \}$ $(i=1,2,\dots,N_{s})$  
+Source class images: $\lbrace x_{i}^S \brace$ $(i=1,2,\dots,N_{s})$  
+Target class images: $\lbrace x_{j}^T \rbrace$ $(i=1,2,\dots,N_{T})$  
+cloned and backdoored images : $\lbrace \hat{x}^S_{i} \rbrace$ $(i=1,2,\dots,N_{s})$  
 - $\hat{x}^S_{i} = x^S_{i} + \delta$, $\delta$ is the backdoor trigger  
 
 $G_i$ :saliency map of training image $i$
 ### Step 3 - Manipulating the target class embeddings
 1. Pick $p%$ of training images from $x_i^T$ and replace them with the poisoned examples calculated like this:
+
 $$
 \begin{align}
 B^\star _{adv} = \underset{B_{adv}}{\text{argmin}}\space \sum_{i} \mid\mid B_{adv}(\hat{x}_{i}^{sub,s}) - B_{adv}(x_{i}^t)\mid\mid^2_{fro} \\
