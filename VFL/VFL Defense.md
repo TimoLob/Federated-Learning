@@ -1,4 +1,42 @@
-# Vertical Federated Learning
+# VFL Defenses
+
+## HFL Defenses applicable to VFL?
+
+[Fools Gold](https://www.usenix.org/system/files/raid20-fung.pdf)
+- Tries to detect multiple malicious actors cooperating by comparing the "direction" they want the model to go
+- Adjusts learning rate to make their contribution weaker or even 0
+- Benign clients rarely align this way since each client has a unique non-iid distribution of data.
+- Why it may be applicable to VFL
+  - Instead of comparing model updates, compare embeddings
+  - Detect if multiple clients drag the embeddings of one class closer to another classes' embeddings (like in BadVFL)
+- Why it may not be applicable to VFL
+  - VFL generally has less clients than VFL
+
+[Krum](https://proceedings.neurips.cc/paper_files/paper/2017/file/f4b9ec30ad9f68f89b29639786cb62ef-Paper.pdf)
+- Non-linear aggregation rule
+  - Linear aggregation rules cannot tolerate even one byzantine client
+- Pick the update vector that minimizes the sum of the distance to its $n-f-2$ neighbors
+- Can't really see how this can be applied to VFL
+
+[Bulyan](https://proceedings.mlr.press/v80/mhamdi18a/mhamdi18a.pdf)
+- Maybe you can aggrege embeddings instead of concatonating them, then apply a similar method.
+- Just a thought
+- Will lose information in the process
+- Some client may have more important information for a specific label, or in general, than another
+
+[CRFL](https://proceedings.mlr.press/v139/xie21a.html)
+- Clipping embedding size may lower the influence a backdoor trigger can have on the top model
+  - Could be done by adding the $L_2$ norm of the embeddings to the loss
+  - This will make every class' embedding smaller and maybe more similar to each other
+  - Would require careful tuning of penalty term
+- Perturbing embeddings may create a more stable model
+  - But the backdoor trigger may also become more stable?
+
+
+[FLDetector](https://dl.acm.org/doi/10.1145/3534678.3539231)
+- Predicts the next client update and calculates a score based on how close the real update is to the prediction
+- Hard to do in VFL since the server only has the label and the top model, we don't have the client model nor how much it has changed
+  
 ## Defenses to investigate
 
 1. Randomly mask input features from participants during training
@@ -23,6 +61,7 @@
    - This should make sure that different classes stay further apart in each clients embeddings
    - Potential Issues:
      - Malicious participants may ignore this penalty term
+
 ## Defenses developed for centralized ML
 - Adversarial learning
   - Have benign clients generate "backdoored" examples but keep the correct label?
